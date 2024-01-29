@@ -69,7 +69,15 @@ export const PokemonStore = signalStore(
                 updateEntity({ id: pokemon.id, changes: { quantity: pokemon.quantity + cartItem.quantity } })
             );
         },
-        clearCart: () => patchState(state, { cart: [] }), // TODO: update the entities quantity
+        clearCart: () => {
+            state.cart().forEach(cartItem => {
+                patchState(
+                    state,
+                    updateEntity({ id: cartItem.pokemon.id, changes: { quantity: cartItem.pokemon.quantity + cartItem.quantity } })
+                );
+            });
+            patchState(state, { cart: [] });
+        },
         selectPokemon: (pokemon: Pokemon) => patchState(state, { selectedPokemon: pokemon }),
         clearPokemonSelection: () => patchState(state, { selectedPokemon: undefined }),
     })),
