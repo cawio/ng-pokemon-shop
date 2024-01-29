@@ -19,6 +19,7 @@ import { CartItem } from '../../Models/CartItem';
 export class ShoppingCartComponent {
   private readonly store = inject(PokemonStore);
   cart = this.store.cart;
+  total = this.store.cartTotal;
 
   constructor() { }
 

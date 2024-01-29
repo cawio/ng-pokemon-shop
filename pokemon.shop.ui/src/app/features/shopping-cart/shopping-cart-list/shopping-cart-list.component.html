@@ -15,7 +15,5 @@
             <h4 mat-line>Your cart is empty</h4>
         </mat-list-item>
     }
+    <h4 mat-subheader>Total: {{ total | currency }}</h4>
 </mat-list>
-@if (cart.length > 0) {
-    <p>Total: {{total() | currency}}</p>
-}

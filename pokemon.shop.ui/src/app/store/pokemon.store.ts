@@ -24,6 +24,7 @@ export const PokemonStore = signalStore(
     withEntities<Pokemon>(),
     withComputed((state) => ({
         cartSize: computed(() => state.cart().length),
+        cartTotal: computed(() => state.cart().reduce((acc, item) => acc + item.product.price * item.quantity, 0)),
     })),
     withMethods((
         state,

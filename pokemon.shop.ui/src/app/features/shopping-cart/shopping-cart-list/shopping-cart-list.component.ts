@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, effect, signal } from '@angular/core';
 import { CartItem } from '../../../Models/CartItem';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,15 +19,12 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ShoppingCartListComponent {
   @Input() cart: CartItem[] = [];
+  @Input() total = 0;
   @Output() removeItem = new EventEmitter<CartItem>();
 
   constructor() { }
 
   removeFromCart(item: CartItem) {
     this.removeItem.emit(item);
-  }
-
-  total(): number {
-    return this.cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
   }
 }
