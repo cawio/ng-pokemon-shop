@@ -20,7 +20,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './marketplace-list.component.html',
   styleUrl: './marketplace-list.component.scss'
 })
-export class MarketplaceComponent {
+export class MarketplaceListComponent {
   private readonly store = inject(PokemonStore)
   dataSource = new MatTableDataSource(this.store.entities());
   loading = this.store.loading;
