@@ -1,0 +1,18 @@
+@if (pokemon) {
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>{{ pokemon.name }}</mat-card-title>
+                <mat-card-subtitle>{{ pokemon.types }}</mat-card-subtitle>
+                <img mat-card-md-image [src]="pokemon.image" [alt]="pokemon.name" />
+            </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ pokemon.height }}</p>
+            <p>{{ pokemon.weight }}</p>
+            <p>{{ pokemon.abilities }}</p>
+        </mat-card-content>
+    </mat-card>
+} @else {
+    <span>Nothing to show...</span>
+}
