@@ -40,29 +40,29 @@ export const PokemonStore = signalStore(
                 return;
             }
 
-            const cartItem = state.cart().find(item => item.pokemon.id === pokemon.id);
+            const cartItem = state.cart().find(item => item.product.id === pokemon.id);
             if (cartItem) {
                 const cart = state.cart().map(item => {
-                    if (item.pokemon.id === pokemon.id) {
+                    if (item.product.id === pokemon.id) {
                         return { ...item, quantity: item.quantity + 1 };
                     }
                     return item;
                 });
                 patchState(state, { cart });
             } else {
-                patchState(state, { cart: [...state.cart(), { pokemon, quantity: 1 }] });
+                patchState(state, { cart: [...state.cart(), { product: pokemon, quantity: 1 }] });
             }
             patchState(state, updateEntity({ id: pokemon.id, changes: { quantity: pokemon.quantity - 1 } }));
         },
         removeFromCart: (pokemon: Pokemon) => {
-            const cartItem = state.cart().find(item => item.pokemon.id === pokemon.id);
+            const cartItem = state.cart().find(item => item.product.id === pokemon.id);
             if (!cartItem) {
                 return;
             }
 
             patchState(
                 state,
-                { cart: state.cart().filter(item => item.pokemon.id !== pokemon.id) }
+                { cart: state.cart().filter(item => item.product.id !== pokemon.id) }
             )
             patchState(
                 state,
@@ -73,7 +73,7 @@ export const PokemonStore = signalStore(
             state.cart().forEach(cartItem => {
                 patchState(
                     state,
-                    updateEntity({ id: cartItem.pokemon.id, changes: { quantity: cartItem.pokemon.quantity + cartItem.quantity } })
+                    updateEntity({ id: cartItem.product.id, changes: { quantity: cartItem.product.quantity + cartItem.quantity } })
                 );
             });
             patchState(state, { cart: [] });

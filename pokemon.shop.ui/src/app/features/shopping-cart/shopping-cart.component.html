@@ -1,0 +1,19 @@
+<mat-vertical-stepper linear="true" animationDuration="20">
+    <mat-step>
+        <app-shopping-cart-list [cart]="cart()" (removeItem)="removeFromCart($event)"/>
+        <button mat-raised-button color="primary" [disabled]="cart().length <= 0" matStepperNext>Next</button>
+    </mat-step>
+    <mat-step>
+        <!-- personal details -->
+
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+    </mat-step>
+    <mat-step>
+        <!-- payment details -->
+        <button mat-raised-button color="primary" matStepperNext>Order</button>
+    </mat-step>
+    <mat-step>
+        <!-- order confirmation -->
+        <span>Order confirmed</span>
+    </mat-step>
+</mat-vertical-stepper>

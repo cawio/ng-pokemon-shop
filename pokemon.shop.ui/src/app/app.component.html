@@ -1,14 +1,17 @@
 <mat-toolbar color="primary" style="height: 10%;">
-  <h1>{{ title }}</h1>
+  <h1 routerLink=".">{{ title }}</h1>
   <span class="spacer"></span>
-  <button
-    mat-icon-button
+  <a
+    mat-fab
+    extended
+    routerLink="/cart"
     [matBadge]="cartItemCount()"
     matBadgeColor="warn"
     [matBadgeHidden]="cartItemCount() <= 0"
     matBadgeSize="medium">
     <mat-icon>shopping_basket</mat-icon>
-  </button>
+    <span>Cart</span>
+  </a>
 </mat-toolbar>
 <mat-drawer-container style="height: 90%;">
   <mat-drawer mode="side">

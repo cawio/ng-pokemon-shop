@@ -1,6 +1,6 @@
 import { Pokemon } from "./Pokemon";
 
 export type CartItem = {
-    pokemon: Pokemon;
+    product: Pokemon;
     quantity: number;
 };

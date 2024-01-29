@@ -1,0 +1,21 @@
+<mat-list role="list" style="width: 100%;">
+    <h4 mat-subheader>Your Items:</h4>
+    @for (item of cart; track item.product.id) {
+        <mat-list-item role="list-item">
+                <img matListItemAvatar src="{{item.product.image}}" alt="{{item.product.name}}">
+                <div matListItemTitle>{{item.product.name}}</div>
+                <button matListItemMeta mat-icon-button (click)="removeFromCart(item)">
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                </button>
+                {{item.product.price | currency}}
+                Quantity: {{item.quantity}}
+        </mat-list-item>
+    } @empty {
+        <mat-list-item>
+            <h4 mat-line>Your cart is empty</h4>
+        </mat-list-item>
+    }
+</mat-list>
+@if (cart.length > 0) {
+    <p>Total: {{total() | currency}}</p>
+}
