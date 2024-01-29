@@ -9,7 +9,8 @@ import { CartItem } from '../Models/CartItem'
 type PokemonState = {
     loading: boolean,
     error: string,
-    cart: CartItem[]
+    cart: CartItem[],
+    selectedId: number | undefined,
 }
 
 export const PokemonStore = signalStore(
@@ -17,7 +18,8 @@ export const PokemonStore = signalStore(
     withState<PokemonState>({
         loading: false,
         error: '',
-        cart: []
+        cart: [],
+        selectedId: undefined,
     }),
     withEntities<Pokemon>(),
     withComputed((state) => ({
@@ -68,6 +70,7 @@ export const PokemonStore = signalStore(
             );
         },
         clearCart: () => patchState(state, { cart: [] }), // TODO: update the entities quantity
+        selectPokemon: (id: number) => patchState(state, { selectedId: id }),
     })),
     withHooks({
         async onInit(store) {
@@ -80,5 +83,5 @@ export const PokemonStore = signalStore(
             store.setLoading(false);
             store.setError('');
         }
-    })
+    }),
 );

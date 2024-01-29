@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { MarketplaceComponent } from './features/marketplace/marketplace.component';
+import { MarketplaceComponent } from './features/marketplace-list/marketplace-list.component';
 
 export const routes: Routes = [
     {

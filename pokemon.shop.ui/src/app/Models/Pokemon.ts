@@ -12,3 +12,7 @@ export type Pokemon = {
     price: number;
     quantity: number;
 };
+
+export function isPokemon(arg: any): arg is Pokemon {
+    return arg && arg.id && arg.name && arg.types && arg.height && arg.weight && arg.image && arg.stats && arg.abilities && arg.price && arg.quantity;
+}

@@ -3,8 +3,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Pokemon } from '../../Models/Pokemon';
+import { Pokemon, isPokemon } from '../../Models/Pokemon';
 import { PokemonStore } from '../../store/pokemon.store';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-marketplace',
@@ -14,9 +15,10 @@ import { PokemonStore } from '../../store/pokemon.store';
     MatIconModule,
     MatButtonModule,
     MatSortModule,
+    NgClass,
   ],
-  templateUrl: './marketplace.component.html',
-  styleUrl: './marketplace.component.scss'
+  templateUrl: './marketplace-list.component.html',
+  styleUrl: './marketplace-list.component.scss'
 })
 export class MarketplaceComponent {
   private readonly store = inject(PokemonStore)
@@ -24,6 +26,7 @@ export class MarketplaceComponent {
   loading = this.store.loading;
   error = this.store.error;
   columnsToDisplay = ['icon', 'name', 'price', 'quantity', 'cart'];
+  slectedPokemonId = this.store.selectedId;
 
   constructor() { }
 
@@ -35,5 +38,21 @@ export class MarketplaceComponent {
 
   addToCart(pokemon: Pokemon) {
     this.store.addToCart(pokemon);
+  }
+
+  rowSelectionChange(pokemon: any) {
+    if (!isPokemon(pokemon)) {
+      return;
+    }
+
+    this.store.selectPokemon(pokemon.id);
+  }
+
+  isRowSelected(pokemon: any): boolean {
+    if (!isPokemon(pokemon) || this.slectedPokemonId() == undefined) {
+      return false;
+    }
+
+    return pokemon.id === this.slectedPokemonId();
   }
 }

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MarketplaceComponent } from './marketplace.component';
+import { MarketplaceComponent } from './marketplace-list.component';
 
 describe('MarketplaceComponent', () => {
   let component: MarketplaceComponent;
@@ -10,8 +10,8 @@ describe('MarketplaceComponent', () => {
     await TestBed.configureTestingModule({
       imports: [MarketplaceComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(MarketplaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
