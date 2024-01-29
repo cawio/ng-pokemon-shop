@@ -2,15 +2,15 @@
     <mat-card>
         <mat-card-header>
             <mat-card-title-group>
-                <mat-card-title>{{ pokemon.name }}</mat-card-title>
-                <mat-card-subtitle>{{ pokemon.types }}</mat-card-subtitle>
+                <mat-card-title>Details for: {{ pokemon.name }}</mat-card-title>
+                <mat-card-subtitle>Type: {{ pokemon.types.join(', ') }}</mat-card-subtitle>
                 <img mat-card-md-image [src]="pokemon.image" [alt]="pokemon.name" />
             </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
-            <p>{{ pokemon.height }}</p>
-            <p>{{ pokemon.weight }}</p>
-            <p>{{ pokemon.abilities }}</p>
+            <p>Height: {{ pokemon.height }} cm</p>
+            <p>Weight: {{ pokemon.weight }} kg</p>
+            <p>Abilities: {{ pokemon.abilities.join(', ') }}</p>
         </mat-card-content>
     </mat-card>
 } @else {

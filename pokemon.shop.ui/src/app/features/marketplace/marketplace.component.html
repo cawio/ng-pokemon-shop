@@ -1,0 +1,6 @@
+<div class="marketplace-container">
+    <app-marketplace-list class="marketplace-list" />
+    @if (selectedPokemon()) {
+        <app-pokemon-card [pokemon]="selectedPokemon()" class="pokemon-card" />
+    }
+</div>

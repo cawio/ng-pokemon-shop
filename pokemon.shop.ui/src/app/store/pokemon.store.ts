@@ -10,7 +10,7 @@ type PokemonState = {
     loading: boolean,
     error: string,
     cart: CartItem[],
-    selectedId: number | undefined,
+    selectedPokemon: Pokemon | undefined,
 }
 
 export const PokemonStore = signalStore(
@@ -19,7 +19,7 @@ export const PokemonStore = signalStore(
         loading: false,
         error: '',
         cart: [],
-        selectedId: undefined,
+        selectedPokemon: undefined,
     }),
     withEntities<Pokemon>(),
     withComputed((state) => ({
@@ -70,7 +70,7 @@ export const PokemonStore = signalStore(
             );
         },
         clearCart: () => patchState(state, { cart: [] }), // TODO: update the entities quantity
-        selectPokemon: (id: number) => patchState(state, { selectedId: id }),
+        selectPokemon: (pokemon: Pokemon) => patchState(state, { selectedPokemon: pokemon }),
     })),
     withHooks({
         async onInit(store) {
