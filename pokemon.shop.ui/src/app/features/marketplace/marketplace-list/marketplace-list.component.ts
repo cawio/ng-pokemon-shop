@@ -5,7 +5,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Pokemon, isPokemon } from '../../../Models/Pokemon';
 import { PokemonStore } from '../../../store/pokemon.store';
-import { NgClass } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-marketplace-list',
@@ -16,6 +16,7 @@ import { NgClass } from '@angular/common';
     MatButtonModule,
     MatSortModule,
     NgClass,
+    CurrencyPipe,
   ],
   templateUrl: './marketplace-list.component.html',
   styleUrl: './marketplace-list.component.scss'
