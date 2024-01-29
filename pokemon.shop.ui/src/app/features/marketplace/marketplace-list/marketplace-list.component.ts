@@ -1,4 +1,4 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, effect, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -23,13 +23,17 @@ import { CurrencyPipe, NgClass } from '@angular/common';
 })
 export class MarketplaceListComponent {
   private readonly store = inject(PokemonStore)
-  dataSource = new MatTableDataSource(this.store.entities());
+  dataSource = new MatTableDataSource<Pokemon>([]);
   loading = this.store.loading;
   error = this.store.error;
   columnsToDisplay = ['icon', 'name', 'price', 'quantity', 'cart'];
   slectedPokemon = this.store.selectedPokemon;
 
-  constructor() { }
+  constructor() {
+    effect(() => {
+      this.dataSource.data = this.store.entities();
+    });
+  }
 
   @ViewChild(MatSort) sort!: MatSort;
 

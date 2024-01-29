@@ -64,6 +64,7 @@ export const PokemonStore = signalStore(
                 state,
                 { cart: state.cart().filter(item => item.product.id !== pokemon.id) }
             )
+
             patchState(
                 state,
                 updateEntity({ id: pokemon.id, changes: { quantity: pokemon.quantity + cartItem.quantity } })
