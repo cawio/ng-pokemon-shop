@@ -45,6 +45,11 @@ export class MarketplaceListComponent {
       return;
     }
 
+    if (this.store.selectedPokemon() && this.store.selectedPokemon()?.id === pokemon.id) {
+      this.store.clearPokemonSelection();
+      return;
+    }
+
     this.store.selectPokemon(pokemon);
   }
 

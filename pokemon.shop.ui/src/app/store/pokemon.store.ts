@@ -71,6 +71,7 @@ export const PokemonStore = signalStore(
         },
         clearCart: () => patchState(state, { cart: [] }), // TODO: update the entities quantity
         selectPokemon: (pokemon: Pokemon) => patchState(state, { selectedPokemon: pokemon }),
+        clearPokemonSelection: () => patchState(state, { selectedPokemon: undefined }),
     })),
     withHooks({
         async onInit(store) {
