@@ -1,9 +1,14 @@
-import { Component, EventEmitter, Input, Output, effect, signal } from '@angular/core';
-import { CartItem } from '../../../Models/CartItem';
-import { MatListModule } from '@angular/material/list';
+import { CurrencyPipe } from '@angular/common';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CurrencyPipe } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { CartItem } from '../../../Models/CartItem';
 
 @Component({
   selector: 'app-shopping-cart-list',

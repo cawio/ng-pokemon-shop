@@ -1,0 +1,32 @@
+<form [formGroup]="shippingForm" class="form-container">
+    @for (name of formControlNames; track $index) {
+        @if (name !== 'type') {
+            <mat-form-field appearance="outline" hideRequiredMarker="true">
+                <mat-label>{{ name | titlecase }}</mat-label>
+                <input matInput [formControlName]="name">
+                @if (shippingForm.hasError('required', name) && shippingForm.get(name)?.touched) {
+                    <mat-error>{{ name | titlecase }} is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+        } @else {
+            <mat-form-field appearance="outline" hideRequiredMarker="true">
+                <mat-label>{{ name | titlecase }}</mat-label>
+                <mat-select [formControlName]="name">
+                    @for (option of shippingTypes; track $index) {
+                        <mat-option [value]="option">{{ option | titlecase }}</mat-option>
+                    }
+                </mat-select>
+                @if (shippingForm.hasError('required', name) && shippingForm.get(name)?.touched) {
+                    <mat-error>{{ name | titlecase }} is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+        }
+    }
+</form>
+<button
+    mat-raised-button
+    color="primary"
+    matStepperNext
+    [disabled]="shippingForm.invalid">
+    Next
+</button>
